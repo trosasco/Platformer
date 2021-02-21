@@ -31,15 +31,21 @@ public class LevelParserStarter : MonoBehaviour
         {
             string line = "";
             int row = 0;
-
+            int column = 0;
+            
             while ((line = sr.ReadLine()) != null)
             {
-                int column = 0;
                 char[] letters = line.ToCharArray();
                 foreach (var letter in letters)
                 {
+                    row++;
+                    Vector3 position = new Vector3(row, column * -1, 0);
                     //Call SpawnPrefab
+                    SpawnPrefab(letter, position);
                 }
+
+                column++;
+                row = 0;
 
             }
 
@@ -53,17 +59,26 @@ public class LevelParserStarter : MonoBehaviour
 
         switch (spot)
         {
-            case 'b': Debug.Log("Spawn Brick"); break;
-            case '?': Debug.Log("Spawn QuestionBox"); break;
-            case 'x': Debug.Log("Spawn Rock"); break;
-            case 's': Debug.Log("Spawn Rock"); break;
+            case 'b':
+                Debug.Log("Spawn Brick");
+                ToSpawn = Brick;
+                break;
+            case '?': Debug.Log("Spawn QuestionBox");
+                ToSpawn = QuestionBox;
+                break;
+            case 'x': Debug.Log("Spawn Rock");
+                ToSpawn = Rock;
+                break;
+            case 's': Debug.Log("Spawn Stone");
+                ToSpawn = Stone;
+                break;
             //default: Debug.Log("Default Entered"); break;
             default: return;
                 //ToSpawn = //Brick;       break;
         }
 
-        //ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
-        //ToSpawn.transform.localPosition = positionToSpawn;
+        ToSpawn = GameObject.Instantiate(ToSpawn, parentTransform);
+        ToSpawn.transform.localPosition = positionToSpawn;
     }
 
     public void RefreshParse()
