@@ -36,5 +36,29 @@ public class EventHandler : MonoBehaviour
             timeRemaining = Mathf.RoundToInt(time);
             timeText.text = timeRemaining.ToString();
         }
+
+        //Check if mouse was clicked
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            //Checks under mouse
+            if (Physics.Raycast(ray, out hit, 5000.0f))
+            {
+                //If brick was hit, destroy it
+                if (hit.transform.CompareTag("Brick"))
+                {
+                    Destroy(hit.transform.gameObject);
+                }
+                
+                //If question box was hit, add coins
+                if (hit.transform.CompareTag("Question"))
+                {
+                    coins += 10;
+                    coinText.text = coins.ToString();
+                }
+            }
+        }
     }
 }
