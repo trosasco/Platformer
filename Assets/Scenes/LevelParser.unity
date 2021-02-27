@@ -180,6 +180,7 @@ MonoBehaviour:
   Brick: {fileID: 3768749415200090006, guid: ffdb5376515a6b842bf1c3780f3eb13e, type: 3}
   QuestionBox: {fileID: 3080011842502737140, guid: 106a92d7288df834284cea746c7557d6, type: 3}
   Stone: {fileID: 8818590249400421704, guid: 56aaed7cc477b874081b69610c8c41b5, type: 3}
+  Water: {fileID: 1287388960580180416, guid: 1788910ac44ac404cb5287a385dce3b3, type: 3}
   parentTransform: {fileID: 992824850}
 --- !u!4 &406602702
 Transform:
