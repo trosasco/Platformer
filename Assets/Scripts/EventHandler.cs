@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class EventHandler : MonoBehaviour
     public Text worldText;
     public Text coinText;
     public Text pointText;
-    
+
     public int startingTime = 100;
     private int timeRemaining;
     private float time;
@@ -39,7 +40,7 @@ public class EventHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("Level failed.");
+            Debug.Log("Game Over");
         }
 
         //Check if mouse was clicked
@@ -69,5 +70,7 @@ public class EventHandler : MonoBehaviour
                 }
             }
         }
+
     }
+
 }
