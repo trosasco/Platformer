@@ -16,13 +16,14 @@ public class EventHandler : MonoBehaviour
     private float time;
 
     private int coins = 0;
+    private int points = 0000;
     
     // Start is called before the first frame update
     void Start()
     {
         time = startingTime;
         worldText.text = "1-1";
-        pointText.text = "00000";
+        pointText.text = points.ToString();
         coinText.text = coins.ToString();
     }
 
@@ -35,6 +36,10 @@ public class EventHandler : MonoBehaviour
             time -= Time.deltaTime;
             timeRemaining = Mathf.RoundToInt(time);
             timeText.text = timeRemaining.ToString();
+        }
+        else
+        {
+            Debug.Log("Level failed.");
         }
 
         //Check if mouse was clicked
@@ -49,13 +54,17 @@ public class EventHandler : MonoBehaviour
                 //If brick was hit, destroy it
                 if (hit.transform.CompareTag("Brick"))
                 {
+                    points += 100;
+                    pointText.text = points.ToString();
                     Destroy(hit.transform.gameObject);
                 }
                 
-                //If question box was hit, add coins
+                //If question box was hit, add coins and points
                 if (hit.transform.CompareTag("Question"))
                 {
-                    coins += 10;
+                    coins += 1;
+                    points += 100;
+                    pointText.text = points.ToString();
                     coinText.text = coins.ToString();
                 }
             }
