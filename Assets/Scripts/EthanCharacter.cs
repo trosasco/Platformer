@@ -69,9 +69,14 @@ public class EthanCharacter : MonoBehaviour
   {
     if (other.gameObject.tag == "Brick")
     {
-      pts.addPoints(100);
-      
-      Destroy(other.gameObject);
+      //Destroy brick based on where player is
+      Vector3 direction = other.transform.position - transform.position;
+      Debug.Log(direction);
+      if (direction.y > 0 && (direction.x >= -0.6 && direction.x <= 0.6))
+      {
+        pts.addPoints(100);
+        Destroy(other.gameObject);
+      }
     }
 
     if (other.gameObject.tag == "Question")
