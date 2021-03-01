@@ -28,7 +28,8 @@ public class EthanCharacter : MonoBehaviour
   void Update()
   {
     float horizontal = Input.GetAxis("Horizontal");
-    //
+    
+    //Set jump
     jump = Input.GetKey(KeyCode.Space);
     animator.SetBool("Jump", jump);
 
@@ -70,6 +71,13 @@ public class EthanCharacter : MonoBehaviour
       Debug.Log("WATER.");
       gameOver();
     }
+
+    if (other.gameObject.tag == "Goal")
+    {
+      Debug.Log("You Completed the Level!");
+      endGame.text = "You Won!";
+      StartCoroutine(showGameOver());
+    }
   }
 
   private void gameOver()
@@ -86,5 +94,8 @@ public class EthanCharacter : MonoBehaviour
     yield return new WaitForSeconds(4f);
 
     endGame.enabled = false;
+    
+    //Reset scene
+    Application.LoadLevel(Application.loadedLevel);
   }
 }
