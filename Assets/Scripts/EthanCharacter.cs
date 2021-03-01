@@ -19,6 +19,8 @@ public class EthanCharacter : MonoBehaviour
 
   public Text endGame;
 
+  public EventHandler pts;
+
   void Awake()
   {
     animator = GetComponent<Animator>();
@@ -63,6 +65,22 @@ public class EthanCharacter : MonoBehaviour
     if (jump) rb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
   }
 
+  private void OnCollisionEnter(Collision other)
+  {
+    if (other.gameObject.tag == "Brick")
+    {
+      pts.addPoints(100);
+      
+      Destroy(other.gameObject);
+    }
+
+    if (other.gameObject.tag == "Question")
+    {
+      pts.addCoins(1);
+      pts.addPoints(100);
+      
+    }
+  }
 
   private void OnTriggerEnter (Collider other)
   {

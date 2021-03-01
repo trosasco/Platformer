@@ -168,10 +168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 44965399}
   modifier: 5
-  jumpForce: 2
+  jumpForce: 1.5
   speed: 0.5
   turbo: 2
   endGame: {fileID: 1427999070}
+  pts: {fileID: 406602703}
 --- !u!95 &44965397
 Animator:
   serializedVersion: 3

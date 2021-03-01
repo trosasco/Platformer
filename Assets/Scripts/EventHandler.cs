@@ -43,7 +43,7 @@ public class EventHandler : MonoBehaviour
             Debug.Log("Game Over");
         }
 
-        //Check if mouse was clicked
+        /*//Check if mouse was clicked
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -69,8 +69,20 @@ public class EventHandler : MonoBehaviour
                     coinText.text = coins.ToString();
                 }
             }
-        }
+        }*/
 
     }
 
+    public void addPoints(int x)
+    {
+        points += x;
+        pointText.text = points.ToString();
+    }
+
+    public void addCoins(int x)
+    {
+        coins += x;
+        coinText.text = coins.ToString();
+    }
+    
 }
